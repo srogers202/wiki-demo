@@ -1,0 +1,17 @@
+.wiki-search {
+  margin-top: 150px;
+  text-align: center;
+  width: 100%;
+}
+
+.wiki-search input {
+  font-size: 20px;
+  line-height: 24px;
+  padding: 15px 20px;
+  width: 300px;
+}
+
+.wiki-search ul {
+  padding-left: 0;
+  list-style: none;
+}
