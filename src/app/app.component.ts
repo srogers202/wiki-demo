@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { WikiService } from './wiki.service'
+import { WikiService } from './wiki.service';
 
 @Component({
   selector: 'app-root',
