@@ -1,28 +1,55 @@
 # WikiDemo
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.1.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+# Step 2
 
-## Code scaffolding
+export class AppComponent {
+  items: Array<string>;
+  term = new FormControl();
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+  constructor(private wikiService: WikiService) {
+    this.term.valueChanges
+      .debounceTime(400)
+      .subscribe(term => this.wikiService.search(term).then(items => this.items = items));
+  }
+}
 
-## Build
+<input type="text" [formControl]="term" placeholder="Enter a search term">
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+# Step 3
 
-## Running end-to-end tests
+distinctUntilChanged
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+# Step 4
+
+return this.jsonp
+              .get('http://en.wikipedia.org/w/api.php?callback=JSONP_CALLBACK', { search })
+              .map((response) => response.json()[1]);
+             
+next -> subscribe
+
+
+
+# Step 5
+
+
+this.term.valueChanges
+      .debounceTime(400)
+      .distinctUntilChanged()
+      .flatMap(term => this.wikiService.search(term))
+      .subscribe(items => this.items = items);
+
+
+# Step 6
+
+switchMap
+
+
+# Step 7
+
+async pipe
